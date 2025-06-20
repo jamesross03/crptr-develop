@@ -23,7 +23,7 @@ import corruptrecord # Main classes to corrupt whole records
 import corruptvalue # Main classes to corrupt attribute values of records
 import crptr
 import positionfunctions
-from EG_SKYE_Corruptor import Utils
+from synthetic-populations-corruptor import Utils
 
 # read in source file
 
