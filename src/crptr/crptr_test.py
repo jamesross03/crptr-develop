@@ -23,7 +23,7 @@ import crptr.corrupt_record as corrupt_record # Main classes to corrupt whole re
 import crptr.corrupt_value as corrupt_value # Main classes to corrupt attribute values of records
 import crptr
 import crptr.position_functions as position_functions
-from crptr.synthetic_populations_corruptor import utils
+from crptr.synthetic_populations import utils
 
 # read in source file
 
