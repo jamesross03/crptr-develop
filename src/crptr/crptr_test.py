@@ -19,9 +19,13 @@
 import random
 
 import crptr.base_functions as base_functions  # Helper functions
-import crptr.corrupt_records.base as base # Main classes to corrupt whole records
+from crptr.corrupt_data_set import CorruptDataSet
+from crptr.corrupt_records.corrupt_clear_record import CorruptClearRecord
+from crptr.corrupt_records.corrupt_duplicate_record import CorruptDuplicateRecord
+from crptr.corrupt_records.corrupt_missing_record import CorruptMissingRecord
+from crptr.corrupt_records.corrupt_overflow_attributes import CorruptOverflowAttributes
+from crptr.corrupt_records.corrupt_swap_attributes import CorruptSwapAttributes
 import crptr.corrupt_value as corrupt_value # Main classes to corrupt attribute values of records
-import crptr
 import crptr.position_functions as position_functions
 from crptr.synthetic_populations import utils
 
@@ -178,17 +182,17 @@ date = corrupt_value.CorruptDate(
 # =====================================================================
 # Record level
 # =====================================================================
-clear_rec = base.CorruptClearRecord(
+clear_rec = CorruptClearRecord(
     clear_val=' '
 )
 
-swap_attr = base.CorruptSwapAttributes(
+swap_attr = CorruptSwapAttributes(
     attr1='FirstName',
     attr2= 'LastName',
     attr_name_list=attr_name_list
 )
 
-over_attr = base.CorruptOverflowAttributes(
+over_attr = CorruptOverflowAttributes(
     attr1='FirstName',
     attr2= 'LastName',
     overflow_level = 0.5,
@@ -196,9 +200,9 @@ over_attr = base.CorruptOverflowAttributes(
     attr_name_list=attr_name_list
 )
 
-missing_rec = base.CorruptMissingRecord()
+missing_rec = CorruptMissingRecord()
 
-duplicate_rec = base.CorruptDuplicateRecord()
+duplicate_rec = CorruptDuplicateRecord()
 
 
 
@@ -243,7 +247,7 @@ attr_mod_data_dictionary = {'LastName':[(0.2, edit_corruptor2),
 
 # Nothing to change here - set-up the data set corruption object
 #
-test_data_corruptor = crptr.CorruptDataSet(number_of_org_records = num_org_rec,
+test_data_corruptor = CorruptDataSet(number_of_org_records = num_org_rec,
                                            number_of_mod_records = num_dup_rec,
                                            attribute_name_list = attr_name_list,
                                            max_num_dup_per_rec = max_duplicate_per_record,

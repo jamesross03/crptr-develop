@@ -17,8 +17,8 @@ import random
 
 #import corruptor      # Main classes to corrupt attribute values and records
 import crptr.base_functions as base_functions  # Helper functions
+from crptr.corrupt_data_set import CorruptDataSet
 import crptr.position_functions as position_functions
-import crptr
 import crptr.corrupt_value as corrupt_value
 
 
@@ -208,7 +208,7 @@ attr_mod_data_dictionary = {'LastName':[(0.2, edit_corruptor2),
 
 # Nothing to change here - set-up the data set corruption object
 #
-test_data_corruptor = crptr.CorruptDataSet(number_of_org_records = \
+test_data_corruptor = CorruptDataSet(number_of_org_records = \
                                           num_org_rec,
                                           number_of_mod_records = num_dup_rec,
                                           attribute_name_list = attr_name_list,

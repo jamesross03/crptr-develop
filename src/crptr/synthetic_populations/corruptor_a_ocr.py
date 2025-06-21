@@ -7,9 +7,11 @@
 # This script performs corruption based on a provided config file
 # This script then outputs the corrupted records to new files ready to be used with linkage-java
 
-from .corruptor_definitions import base
+from crptr.corrupt_data_set import CorruptDataSet
+from crptr.synthetic_populations.corruptor_definitions.birth_corruptors import BirthCorruptors
+from crptr.synthetic_populations.corruptor_definitions.death_corruptors import DeathCorruptors
+from crptr.synthetic_populations.corruptor_definitions.marriage_corruptors import MarriageCorruptors
 from . import utils
-import crptr
 import sys
 import csv
 
@@ -27,7 +29,7 @@ def birthCorruptor(inputFile, outputFile, logFile, lookupFilesDir, deterministic
     dataset = utils.convertFromListOfDictsToDictOfLists(dataset)
     labels = utils.extractLabels(dataset)
 
-    corruptor = base.BirthCorruptors(labels, lookupFilesDir)
+    corruptor = BirthCorruptors(labels, lookupFilesDir)
 
     utils.setDeterminism(deterministic, seed)
 
@@ -116,7 +118,7 @@ def birthCorruptor(inputFile, outputFile, logFile, lookupFilesDir, deterministic
     numberToModify = int(numberOfRecords * proportionOfRecordsToCorrupt)
     print("Records to be corrupted: " + str(numberToModify))
 
-    crptrInstance = crptr.CorruptDataSet(number_of_org_records=numberOfRecords,
+    crptrInstance = CorruptDataSet(number_of_org_records=numberOfRecords,
                                          number_of_mod_records=numberToModify,
                                          attribute_name_list=labels,
                                          max_num_dup_per_rec=1,
@@ -163,7 +165,7 @@ def deathCorruptor(inputFile, outputFile, logFile, lookupFilesDir, deterministic
     records = utils.convertFromListOfDictsToDictOfLists(records)
     labels = utils.extractLabels(records)
 
-    corruptor = base.DeathCorruptors(labels, lookupFilesDir)
+    corruptor = DeathCorruptors(labels, lookupFilesDir)
 
     utils.setDeterminism(deterministic, seed)
 
@@ -272,7 +274,7 @@ def deathCorruptor(inputFile, outputFile, logFile, lookupFilesDir, deterministic
     numberToModify = int(numberOfRecords * proportionOfRecordsToCorrupt)
     print("Records to be corrupted: " + str(numberToModify))
 
-    crptrInstance = crptr.CorruptDataSet(number_of_org_records=numberOfRecords,
+    crptrInstance = CorruptDataSet(number_of_org_records=numberOfRecords,
                                          number_of_mod_records=numberToModify,
                                          attribute_name_list=labels,
                                          max_num_dup_per_rec=1,
@@ -318,7 +320,7 @@ def marriageCorruptor(inputFile, outputFile, logFile, lookupFilesDir, determinis
     records = utils.convertFromListOfDictsToDictOfLists(records)
     labels = utils.extractLabels(records)
 
-    corruptor = base.MarriageCorruptors(labels, lookupFilesDir)
+    corruptor = MarriageCorruptors(labels, lookupFilesDir)
 
     utils.setDeterminism(deterministic, seed)
 
@@ -433,7 +435,7 @@ def marriageCorruptor(inputFile, outputFile, logFile, lookupFilesDir, determinis
     numberToModify = int(numberOfRecords * proportionOfRecordsToCorrupt)
     print("Records to be corrupted: " + str(numberToModify))
 
-    crptrInstance = crptr.CorruptDataSet(number_of_org_records=numberOfRecords,
+    crptrInstance = CorruptDataSet(number_of_org_records=numberOfRecords,
                                          number_of_mod_records=numberToModify,
                                          attribute_name_list=labels,
                                          max_num_dup_per_rec=1,

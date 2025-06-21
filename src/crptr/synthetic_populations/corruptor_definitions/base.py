@@ -1,5 +1,5 @@
+from crptr.corrupt_records.corrupt_clear_record import CorruptClearRecord
 import crptr.corrupt_value as corrupt_value  # Main classes to corrupt attribute values of records
-import crptr.corrupt_records.base as base  # Main classes to corrupt whole records
 import crptr.base_functions as base_functions  # Helper functions
 import crptr.position_functions as position_functions
 
@@ -142,6 +142,6 @@ class Corruptors:
         # =====================================================================
         # Record level
         # =====================================================================
-        self.blankRecord = base.CorruptClearRecord(
+        self.blankRecord = CorruptClearRecord(
             clear_val=' '
         )
