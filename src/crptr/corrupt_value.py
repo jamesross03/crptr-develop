@@ -780,7 +780,7 @@ class CorruptValuePhonetic(CorruptValue):
                  work_str[org_pat_start+org_pat_length:]
 
     if (work_str == tmp_str):
-      work_str = str_to_change
+      work_str = in_str
 
     return work_str
 
