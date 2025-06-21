@@ -1,7 +1,7 @@
-import corruptvalue  # Main classes to corrupt attribute values of records
-import corruptrecord  # Main classes to corrupt whole records
-import basefunctions  # Helper functions
-import positionfunctions
+import crptr.corrupt_value as corrupt_value  # Main classes to corrupt attribute values of records
+import crptr.corrupt_record as corrupt_record  # Main classes to corrupt whole records
+import crptr.base_functions as base_functions  # Helper functions
+import crptr.position_functions as position_functions
 
 
 class Corruptors:
@@ -16,45 +16,45 @@ class Corruptors:
         # =====================================================================
         # Character level
         # =====================================================================
-        self.generalCharacter = corruptvalue.CorruptValueEdit(
-            position_function = positionfunctions.position_mod_normal,
-            char_set_funct = basefunctions.char_set_ascii,
+        self.generalCharacter = corrupt_value.CorruptValueEdit(
+            position_function = position_functions.position_mod_normal,
+            char_set_funct = base_functions.char_set_ascii,
             insert_prob = 0.2,
             delete_prob = 0.2,
             substitute_prob = 0.5,
             transpose_prob = 0.1
         )
 
-        self.marritalStatus = corruptvalue.CorruptCategoricalDomain(
+        self.marritalStatus = corrupt_value.CorruptCategoricalDomain(
             categories_list=["R", "M", "W", "D", "B", "S"]
         )
 
-        self.surnameMisspell = corruptvalue.CorruptCategoricalValue(
+        self.surnameMisspell = corrupt_value.CorruptCategoricalValue(
             lookup_file_name = self.lookupFilesDir + '/surname-misspell.csv',
             has_header_line = False,
             unicode_encoding = self.encoding
         )
 
-        self.keyboardShift = corruptvalue.CorruptValueKeyboard(
-            position_function = positionfunctions.position_mod_normal,
+        self.keyboardShift = corrupt_value.CorruptValueKeyboard(
+            position_function = position_functions.position_mod_normal,
             row_prob = 0.4,
             col_prob = 0.6
         )
 
-        self.unknownCharacter = corruptvalue.CorruptUnknownCharacter(
-            position_function=positionfunctions.position_mod_uniform,
+        self.unknownCharacter = corrupt_value.CorruptUnknownCharacter(
+            position_function=position_functions.position_mod_uniform,
             unknown_char="?"
         )
 
-        self.deceasedFlip = corruptvalue.CorruptCategoricalDomain(
+        self.deceasedFlip = corrupt_value.CorruptCategoricalDomain(
             categories_list=["D", ""]
         )
 
-        self.ocr = corruptvalue.CorruptValueOCR(
+        self.ocr = corrupt_value.CorruptValueOCR(
             lookup_file_name = self.lookupFilesDir + '/ocr-variations.csv',
             has_header_line=False,
             unicode_encoding=self.encoding,
-            position_function=positionfunctions.position_mod_uniform
+            position_function=position_functions.position_mod_uniform
         )
 
         # =====================================================================
@@ -62,26 +62,26 @@ class Corruptors:
         # =====================================================================
 
 
-        self.abbreviateToInitial = corruptvalue.CorruptAbbreviatedNameForms(
+        self.abbreviateToInitial = corrupt_value.CorruptAbbreviatedNameForms(
             num_of_char = 1
         )
 
-        self.sexFlip = corruptvalue.CorruptCategoricalDomain(
+        self.sexFlip = corrupt_value.CorruptCategoricalDomain(
             categories_list = ["m", "f"]
         )
 
-        self.missingValue = corruptvalue.CorruptMissingValue(
+        self.missingValue = corrupt_value.CorruptMissingValue(
             missing_val='missing'
         )
 
-        self.dateDDMMYYYY = corruptvalue.CorruptDate(
+        self.dateDDMMYYYY = corrupt_value.CorruptDate(
             date_order = "yyyy-mm-dd",
             separator = "-",
             components_to_modify = ['day', 'month', 'year'],
             date_corruption_methods = ['add', 'decline', 'swap_digit','swap_comp', 'random', 'first','full_month','abbr_month']
         )
 
-        self.phoneticVariation = corruptvalue.CorruptValuePhonetic(
+        self.phoneticVariation = corrupt_value.CorruptValuePhonetic(
             lookup_file_name = self.lookupFilesDir + '/phonetic-variations.csv',
             has_header_line = False,
             unicode_encoding = self.encoding
@@ -144,7 +144,7 @@ class Corruptors:
         # =====================================================================
         # Record level
         # =====================================================================
-        self.blankRecord = corruptrecord.CorruptClearRecord(
+        self.blankRecord = corrupt_record.CorruptClearRecord(
             clear_val=' '
         )
 
@@ -163,25 +163,25 @@ class BirthCorruptors(Corruptors):
         # =====================================================================
         # Record level
         # =====================================================================
-        self.dayMonthSwapMarriage = corruptrecord.CorruptSwapAttributes(
+        self.dayMonthSwapMarriage = corrupt_record.CorruptSwapAttributes(
             attr1='day of parents\' marriage',
             attr2='month of parents\' marriage',
             attr_name_list=self.columnLabels
         )
 
-        self.childNameSwap = corruptrecord.CorruptSwapAttributes(
+        self.childNameSwap = corrupt_record.CorruptSwapAttributes(
             attr1='child\'s forname(s)',
             attr2='child\'s surname',
             attr_name_list=self.columnLabels
         )
 
-        self.fatherNameSwap = corruptrecord.CorruptSwapAttributes(
+        self.fatherNameSwap = corrupt_record.CorruptSwapAttributes(
             attr1='father\'s forename',
             attr2='father\'s surname',
             attr_name_list=self.columnLabels
         )
 
-        self.motherNameSwap = corruptrecord.CorruptSwapAttributes(
+        self.motherNameSwap = corrupt_record.CorruptSwapAttributes(
             attr1='mother\'s forename',
             attr2='mother\'s maiden surname',
             attr_name_list=self.columnLabels
@@ -206,25 +206,25 @@ class DeathCorruptors(Corruptors):
         # =====================================================================
         # Record level
         # =====================================================================
-        self.dayMonthSwapDeath = corruptrecord.CorruptSwapAttributes(
+        self.dayMonthSwapDeath = corrupt_record.CorruptSwapAttributes(
             attr1='day',
             attr2='month',
             attr_name_list=self.columnLabels
         )
 
-        self.deceasedNameSwap = corruptrecord.CorruptSwapAttributes(
+        self.deceasedNameSwap = corrupt_record.CorruptSwapAttributes(
             attr1='forename(s) of deceased',
             attr2='surname of deceased',
             attr_name_list=self.columnLabels
         )
 
-        self.fatherNameSwap = corruptrecord.CorruptSwapAttributes(
+        self.fatherNameSwap = corrupt_record.CorruptSwapAttributes(
             attr1='father\'s forename',
             attr2='father\'s surname',
             attr_name_list=self.columnLabels
         )
 
-        self.motherNameSwap = corruptrecord.CorruptSwapAttributes(
+        self.motherNameSwap = corrupt_record.CorruptSwapAttributes(
             attr1='mother\'s forename',
             attr2='mother\'s maiden surname',
             attr_name_list=self.columnLabels
@@ -242,43 +242,43 @@ class MarriageCorruptors(Corruptors):
 
         Corruptors.setup(self)
 
-        self.dayMonthSwapDeath = corruptrecord.CorruptSwapAttributes(
+        self.dayMonthSwapDeath = corrupt_record.CorruptSwapAttributes(
             attr1='day',
             attr2='month',
             attr_name_list=self.columnLabels
         )
 
-        self.groomNameSwap = corruptrecord.CorruptSwapAttributes(
+        self.groomNameSwap = corrupt_record.CorruptSwapAttributes(
             attr1='forename of groom',
             attr2='surname of groom',
             attr_name_list=self.columnLabels
         )
 
-        self.brideNameSwap = corruptrecord.CorruptSwapAttributes(
+        self.brideNameSwap = corrupt_record.CorruptSwapAttributes(
             attr1='forename of bride',
             attr2='surname of bride',
             attr_name_list=self.columnLabels
         )
 
-        self.groomFatherNameSwap = corruptrecord.CorruptSwapAttributes(
+        self.groomFatherNameSwap = corrupt_record.CorruptSwapAttributes(
             attr1='groom\'s father\'s forename',
             attr2='groom\'s father\'s surname',
             attr_name_list=self.columnLabels
         )
 
-        self.groomMotherNameSwap = corruptrecord.CorruptSwapAttributes(
+        self.groomMotherNameSwap = corrupt_record.CorruptSwapAttributes(
             attr1='groom\'s mother\'s forename',
             attr2='groom\'s mother\'s maiden surname',
             attr_name_list=self.columnLabels
         )
 
-        self.brideFatherNameSwap = corruptrecord.CorruptSwapAttributes(
+        self.brideFatherNameSwap = corrupt_record.CorruptSwapAttributes(
             attr1='bride\'s father\'s forename',
             attr2='bride\'s father\'s surname',
             attr_name_list=self.columnLabels
         )
 
-        self.brideMotherNameSwap = corruptrecord.CorruptSwapAttributes(
+        self.brideMotherNameSwap = corrupt_record.CorruptSwapAttributes(
             attr1='bride\'s mother\'s forename',
             attr2='bride\'s mother\'s maiden surname',
             attr_name_list=self.columnLabels

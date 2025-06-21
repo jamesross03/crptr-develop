@@ -7,8 +7,8 @@
 # This script performs corruption based on a provided config file
 # This script then outputs the corrupted records to new files ready to be used with linkage-java
 
-from . import CorruptorDefinitions
-from . import Utils
+from . import corruptor_definitions
+from . import utils
 import crptr
 import sys
 import csv
@@ -22,14 +22,14 @@ def birthCorruptor(inputFile, outputFile, logFile, lookupFilesDir, deterministic
     dataset = list(csv.DictReader(open(inputFile)))
 
     # add crptr ids
-    dataset = Utils.addCryptIDs(dataset)
+    dataset = utils.addCryptIDs(dataset)
 
-    dataset = Utils.convertFromListOfDictsToDictOfLists(dataset)
-    labels = Utils.extractLabels(dataset)
+    dataset = utils.convertFromListOfDictsToDictOfLists(dataset)
+    labels = utils.extractLabels(dataset)
 
-    corruptor = CorruptorDefinitions.BirthCorruptors(labels, lookupFilesDir)
+    corruptor = corruptor_definitions.BirthCorruptors(labels, lookupFilesDir)
 
-    Utils.setDeterminism(deterministic, seed)
+    utils.setDeterminism(deterministic, seed)
 
     # data corruption
     numberOfCorruptibleAttributes = 14
@@ -131,13 +131,13 @@ def birthCorruptor(inputFile, outputFile, logFile, lookupFilesDir, deterministic
     # end of data corruption
 
     # remove original versions for corrupter records
-    Utils.removeOrigonalRecordsForWhichDuplicateExists(records, labels)
+    utils.removeOrigonalRecordsForWhichDuplicateExists(records, labels)
 
     # remove crptr ids
-    Utils.removeCryptIDs(records, labels)
+    utils.removeCryptIDs(records, labels)
 
     # Output corrupted data
-    Utils.outputDictToCSV(labels, records, outputFile)
+    utils.outputDictToCSV(labels, records, outputFile)
 
     sys.stdout = so
     logOutput.close()
@@ -158,14 +158,14 @@ def deathCorruptor(inputFile, outputFile, logFile, lookupFilesDir, deterministic
     # records = Utils.removeCommas(records)
 
     # add crptr ids
-    records = Utils.addCryptIDs(records)
+    records = utils.addCryptIDs(records)
 
-    records = Utils.convertFromListOfDictsToDictOfLists(records)
-    labels = Utils.extractLabels(records)
+    records = utils.convertFromListOfDictsToDictOfLists(records)
+    labels = utils.extractLabels(records)
 
-    corruptor = CorruptorDefinitions.DeathCorruptors(labels, lookupFilesDir)
+    corruptor = corruptor_definitions.DeathCorruptors(labels, lookupFilesDir)
 
-    Utils.setDeterminism(deterministic, seed)
+    utils.setDeterminism(deterministic, seed)
 
     # data corruption
     numberOfCorruptibleAttributes = 19
@@ -291,13 +291,13 @@ def deathCorruptor(inputFile, outputFile, logFile, lookupFilesDir, deterministic
     # end of data corruption
 
     # remove original versions for corrupter records
-    Utils.removeOrigonalRecordsForWhichDuplicateExists(records, labels)
+    utils.removeOrigonalRecordsForWhichDuplicateExists(records, labels)
 
     # remove crptr ids
-    Utils.removeCryptIDs(records, labels)
+    utils.removeCryptIDs(records, labels)
 
     # Output corrupted data
-    Utils.outputDictToCSV(labels, records, outputFile)
+    utils.outputDictToCSV(labels, records, outputFile)
 
     sys.stdout = so
     logOutput.close()
@@ -317,14 +317,14 @@ def marriageCorruptor(inputFile, outputFile, logFile, lookupFilesDir, determinis
     # records = Utils.removeCommas(records)
 
     # add crptr ids
-    records = Utils.addCryptIDs(records)
+    records = utils.addCryptIDs(records)
 
-    records = Utils.convertFromListOfDictsToDictOfLists(records)
-    labels = Utils.extractLabels(records)
+    records = utils.convertFromListOfDictsToDictOfLists(records)
+    labels = utils.extractLabels(records)
 
-    corruptor = CorruptorDefinitions.MarriageCorruptors(labels, lookupFilesDir)
+    corruptor = corruptor_definitions.MarriageCorruptors(labels, lookupFilesDir)
 
-    Utils.setDeterminism(deterministic, seed)
+    utils.setDeterminism(deterministic, seed)
 
     # data corruption
     numberOfCorruptibleAttributes = 28
@@ -453,13 +453,13 @@ def marriageCorruptor(inputFile, outputFile, logFile, lookupFilesDir, determinis
     # end of data corruption
 
     # remove original versions for corrupter records
-    Utils.removeOrigonalRecordsForWhichDuplicateExists(records, labels)
+    utils.removeOrigonalRecordsForWhichDuplicateExists(records, labels)
 
     # remove crptr ids
-    Utils.removeCryptIDs(records, labels)
+    utils.removeCryptIDs(records, labels)
 
     # Output corrupted data
-    Utils.outputDictToCSV(labels, records, outputFile)
+    utils.outputDictToCSV(labels, records, outputFile)
 
     sys.stdout = so
     logOutput.close()
