@@ -1,7 +1,7 @@
 import math
 import random
-import basefunctions
-import positionfunctions
+import crptr.base_functions as base_functions
+import crptr.position_functions as position_functions
 # ===============================================================================
 # Classes for corrupting a value in a list of attributes (fields) of the data set
 # ===============================================================================
@@ -45,7 +45,7 @@ class CorruptRecord:
 #AHMAD#This is checking from calls in generate-data-english.py file
 #AHMAD# 'position' realted to the inserted argument in the file config and same to others
       if (keyword.startswith('position')):
-        basefunctions.check_is_function_or_method('position_function', value)
+        base_functions.check_is_function_or_method('position_function', value)
         #AHMAD# setting position to the given value in the file
         #-----# in this case one of the functions (position_mod_normal or position_mod_uniform)
         self.position_function = value
@@ -54,7 +54,7 @@ class CorruptRecord:
         raise Exception('Illegal constructor argument keyword: "%s"' % \
               (str(keyword)))
 
-    basefunctions.check_is_function_or_method('position_function',
+    base_functions.check_is_function_or_method('position_function',
                                               self.position_function)
 
     # Check if the position function does return an integer value
@@ -112,7 +112,7 @@ class CorruptClearRecord(CorruptRecord):
     for (keyword, value) in list(kwargs.items()):
 
       if (keyword.startswith('clear')):
-        basefunctions.check_is_string('clear_val', value)
+        base_functions.check_is_string('clear_val', value)
         self.clear_val = value
 
       else:
@@ -178,14 +178,14 @@ class CorruptSwapAttributes(CorruptRecord):
     for (keyword, value) in list(kwargs.items()):
 
       if (keyword.startswith('attr1')):
-        basefunctions.check_is_string('attr1', value)
+        base_functions.check_is_string('attr1', value)
         self.attr1 = value
         if (value not in attr_name_list):
             raise Exception('Value of "%s" is not in dataset attributes. Check dataset correct attributes ' % str(value))
 
 
       elif (keyword.startswith('attr2')):
-        basefunctions.check_is_string('attr2', value)
+        base_functions.check_is_string('attr2', value)
         self.attr2 = value
         if (value not in attr_name_list):
             raise Exception('Value of "%s" is not in dataset attributes. Check dataset correct attributes ' % str(value))
@@ -261,23 +261,23 @@ class CorruptOverflowAttributes(CorruptRecord):
     for (keyword, value) in list(kwargs.items()):
 
       if (keyword.startswith('attr1')):
-        basefunctions.check_is_string('attr1', value)
+        base_functions.check_is_string('attr1', value)
         self.attr1 = value
         if (value not in attr_name_list):
             raise Exception('Value of "%s" is not in dataset attributes. Check dataset correct attributes : %s' % str(value))
 
       elif (keyword.startswith('attr2')):
-        basefunctions.check_is_string('attr2', value)
+        base_functions.check_is_string('attr2', value)
         self.attr2 = value
         if (value not in attr_name_list):
             raise Exception('Value of "%s" is not in dataset attributes. Check dataset correct attributes : %s' % str(value))
 
       elif (keyword.startswith('overflow')):
-        basefunctions.check_is_normalised('overflow_level', value)
+        base_functions.check_is_normalised('overflow_level', value)
         self.overflow_level = value
 
       elif (keyword.startswith('start')):
-        basefunctions.check_start_position_of_overflow('start_pos', value)
+        base_functions.check_start_position_of_overflow('start_pos', value)
         self.start_pos = value
 
       else:

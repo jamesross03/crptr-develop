@@ -1,5 +1,5 @@
 from . import CorrupterBStandard
-from . import CorrupterAocr
+from . import corruptor_a_ocr
 import time
 import sys
 
@@ -57,7 +57,7 @@ for popName in popNames:
                 st = time.time()
 
                 if corruptionLetter == "A":
-                    CorrupterAocr.birthCorruptor(birthInputFile, birthOutputFile, birthLogFile, lookupFilesDir, deterministic, seed,
+                    corruptor_a_ocr.birthCorruptor(birthInputFile, birthOutputFile, birthLogFile, lookupFilesDir, deterministic, seed,
                                                   a_proportionOfRecordsToCorrupt, a_maxModificationsPerAttribute,
                                                  a_numberOfModificationsPerRecord, a_recordLevelProportion)
 
@@ -76,7 +76,7 @@ for popName in popNames:
                 st = time.time()
 
                 if corruptionLetter == "A":
-                    CorrupterAocr.deathCorruptor(deathInputFile, deathOutputFile, deathLogFile, lookupFilesDir, deterministic, seed,
+                    corruptor_a_ocr.deathCorruptor(deathInputFile, deathOutputFile, deathLogFile, lookupFilesDir, deterministic, seed,
                                                  a_proportionOfRecordsToCorrupt, a_maxModificationsPerAttribute,
                                                  a_numberOfModificationsPerRecord, a_recordLevelProportion)
 
@@ -95,7 +95,7 @@ for popName in popNames:
                 st = time.time()
 
                 if corruptionLetter == "A":
-                    CorrupterAocr.marriageCorruptor(marriageInputFile, marriageOutputFile, marriageLogFile, lookupFilesDir, deterministic, seed,
+                    corruptor_a_ocr.marriageCorruptor(marriageInputFile, marriageOutputFile, marriageLogFile, lookupFilesDir, deterministic, seed,
                                                     a_proportionOfRecordsToCorrupt, a_maxModificationsPerAttribute,
                                                     a_numberOfModificationsPerRecord, a_recordLevelProportion)
 
