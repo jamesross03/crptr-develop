@@ -1,4 +1,4 @@
-from . import CorrupterBStandard
+from . import corruptor_b_standard
 from . import corruptor_a_ocr
 import time
 import sys
@@ -62,12 +62,12 @@ for popName in popNames:
                                                  a_numberOfModificationsPerRecord, a_recordLevelProportion)
 
                 if corruptionLetter == "B":
-                    CorrupterBStandard.birthCorruptor(birthInputFile, birthOutputFile, birthLogFile, lookupFilesDir, deterministic, seed,
+                    corruptor_b_standard.birthCorruptor(birthInputFile, birthOutputFile, birthLogFile, lookupFilesDir, deterministic, seed,
                                                   b_proportionOfRecordsToCorrupt, b_maxModificationsPerAttribute,
                                                       b_numberOfModificationsPerRecord, b_recordLevelProportion)
 
                 if corruptionLetter == "C":
-                    CorrupterBStandard.birthCorruptor(birthInputFile, birthOutputFile, birthLogFile, lookupFilesDir, deterministic, seed,
+                    corruptor_b_standard.birthCorruptor(birthInputFile, birthOutputFile, birthLogFile, lookupFilesDir, deterministic, seed,
                                                   c_proportionOfRecordsToCorrupt, c_maxModificationsPerAttribute,
                                                       c_numberOfModificationsPerRecord, c_recordLevelProportion)
 
@@ -81,12 +81,12 @@ for popName in popNames:
                                                  a_numberOfModificationsPerRecord, a_recordLevelProportion)
 
                 if corruptionLetter == "B":
-                    CorrupterBStandard.deathCorruptor(deathInputFile, deathOutputFile, deathLogFile, lookupFilesDir, deterministic, seed,
+                    corruptor_b_standard.deathCorruptor(deathInputFile, deathOutputFile, deathLogFile, lookupFilesDir, deterministic, seed,
                                                       b_proportionOfRecordsToCorrupt, b_maxModificationsPerAttribute,
                                                       b_numberOfModificationsPerRecord, b_recordLevelProportion)
 
                 if corruptionLetter == "C":
-                    CorrupterBStandard.deathCorruptor(deathInputFile, deathOutputFile, deathLogFile, lookupFilesDir, deterministic, seed,
+                    corruptor_b_standard.deathCorruptor(deathInputFile, deathOutputFile, deathLogFile, lookupFilesDir, deterministic, seed,
                                                       c_proportionOfRecordsToCorrupt, c_maxModificationsPerAttribute,
                                                       c_numberOfModificationsPerRecord, c_recordLevelProportion)
 
@@ -101,12 +101,12 @@ for popName in popNames:
 
 
                 if corruptionLetter == "B":
-                    CorrupterBStandard.marriageCorruptor(marriageInputFile, marriageOutputFile, marriageLogFile, lookupFilesDir, deterministic, seed,
+                    corruptor_b_standard.marriageCorruptor(marriageInputFile, marriageOutputFile, marriageLogFile, lookupFilesDir, deterministic, seed,
                                                          b_proportionOfRecordsToCorrupt, b_maxModificationsPerAttribute,
                                                          b_numberOfModificationsPerRecord, b_recordLevelProportion)
 
                 if corruptionLetter == "C":
-                    CorrupterBStandard.marriageCorruptor(marriageInputFile, marriageOutputFile, marriageLogFile, lookupFilesDir, deterministic, seed,
+                    corruptor_b_standard.marriageCorruptor(marriageInputFile, marriageOutputFile, marriageLogFile, lookupFilesDir, deterministic, seed,
                                                          c_proportionOfRecordsToCorrupt, c_maxModificationsPerAttribute,
                                                          c_numberOfModificationsPerRecord, c_recordLevelProportion)
 
