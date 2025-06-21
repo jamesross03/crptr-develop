@@ -19,7 +19,7 @@
 import random
 
 import crptr.base_functions as base_functions  # Helper functions
-import crptr.corrupt_record as corrupt_record # Main classes to corrupt whole records
+import crptr.corrupt_records.base as base # Main classes to corrupt whole records
 import crptr.corrupt_value as corrupt_value # Main classes to corrupt attribute values of records
 import crptr
 import crptr.position_functions as position_functions
@@ -178,17 +178,17 @@ date = corrupt_value.CorruptDate(
 # =====================================================================
 # Record level
 # =====================================================================
-clear_rec = corrupt_record.CorruptClearRecord(
+clear_rec = base.CorruptClearRecord(
     clear_val=' '
 )
 
-swap_attr = corrupt_record.CorruptSwapAttributes(
+swap_attr = base.CorruptSwapAttributes(
     attr1='FirstName',
     attr2= 'LastName',
     attr_name_list=attr_name_list
 )
 
-over_attr = corrupt_record.CorruptOverflowAttributes(
+over_attr = base.CorruptOverflowAttributes(
     attr1='FirstName',
     attr2= 'LastName',
     overflow_level = 0.5,
@@ -196,9 +196,9 @@ over_attr = corrupt_record.CorruptOverflowAttributes(
     attr_name_list=attr_name_list
 )
 
-missing_rec = corrupt_record.CorruptMissingRecord()
+missing_rec = base.CorruptMissingRecord()
 
-duplicate_rec = corrupt_record.CorruptDuplicateRecord()
+duplicate_rec = base.CorruptDuplicateRecord()
 
 
 

@@ -1,4 +1,4 @@
-from crptr import corrupt_record
+from crptr.corrupt_records import base
 from crptr.synthetic_populations.corruptor_definitions.base import Corruptors
 
 class BirthCorruptors(Corruptors):
@@ -14,25 +14,25 @@ class BirthCorruptors(Corruptors):
         # =====================================================================
         # Record level
         # =====================================================================
-        self.dayMonthSwapMarriage = corrupt_record.CorruptSwapAttributes(
+        self.dayMonthSwapMarriage = base.CorruptSwapAttributes(
             attr1='day of parents\' marriage',
             attr2='month of parents\' marriage',
             attr_name_list=self.columnLabels
         )
 
-        self.childNameSwap = corrupt_record.CorruptSwapAttributes(
+        self.childNameSwap = base.CorruptSwapAttributes(
             attr1='child\'s forname(s)',
             attr2='child\'s surname',
             attr_name_list=self.columnLabels
         )
 
-        self.fatherNameSwap = corrupt_record.CorruptSwapAttributes(
+        self.fatherNameSwap = base.CorruptSwapAttributes(
             attr1='father\'s forename',
             attr2='father\'s surname',
             attr_name_list=self.columnLabels
         )
 
-        self.motherNameSwap = corrupt_record.CorruptSwapAttributes(
+        self.motherNameSwap = base.CorruptSwapAttributes(
             attr1='mother\'s forename',
             attr2='mother\'s maiden surname',
             attr_name_list=self.columnLabels
