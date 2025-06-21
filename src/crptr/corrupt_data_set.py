@@ -4,8 +4,6 @@
 import math
 import random
 
-from time import sleep
-
 import crptr.base_functions as base_functions
 
 class CorruptDataSet:

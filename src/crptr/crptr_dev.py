@@ -14,7 +14,6 @@
 #
 import csv
 import random
-import sys
 
 #import corruptor      # Main classes to corrupt attribute values and records
 import crptr.base_functions as base_functions  # Helper functions

@@ -1,3 +1,4 @@
+from crptr import base_functions
 from crptr.corrupt_records.base import CorruptRecord
 
 

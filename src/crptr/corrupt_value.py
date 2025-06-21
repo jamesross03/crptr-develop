@@ -1,10 +1,9 @@
 # -----------------------------------------------------------------------------
 # Import necessary modules
 
-import math
 import random
 import crptr.base_functions as base_functions
-import crptr.position_functions as position_functions
+
 # =============================================================================
 # Classes for corrupting a value in a single attribute (field) of the data set
 # =============================================================================
