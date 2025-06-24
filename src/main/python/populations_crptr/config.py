@@ -4,11 +4,12 @@
 #
 # Config object for population_corruptor.py example population corruptor.
 
-from population_crptr.example_profiles.profile_a import CorruptionProfileA
-from population_crptr.example_profiles.profile_a import CorruptionProfileB
-from population_crptr.example_profiles.profile_a import CorruptionProfileC
-import population_crptr.example_corruptors.ocr_corruptors_td as OcrCorruptorsTD 
-import population_crptr.example_corruptors.standard_corruptors_td as StandardCorruptorsTD 
+from populations_crptr.example_profiles.profile_a import CorruptionProfileA
+from populations_crptr.example_profiles.profile_b import CorruptionProfileB
+from populations_crptr.example_profiles.profile_c import CorruptionProfileC
+import populations_crptr.example_corruptors.standard_corruptors_td as StandardCorruptorsTD
+import populations_crptr.example_corruptors.ocr_corruptors_td as OcrCorruptorsTD
+
 
 class Config:
     CORRUPTION_PROFILE = CorruptionProfileA

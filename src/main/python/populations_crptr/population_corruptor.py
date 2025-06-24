@@ -6,6 +6,9 @@
 # "marriage_records", "death_records") in TD format and outputs a corrupt
 # version of the records.
 
+import datetime
+import os
+import sys
 from config import Config
 
 def main(filepath):
@@ -19,7 +22,8 @@ def main(filepath):
 
     print (f"Running crptr for {filepath}")
 
-    timestamp_str = datetime.now().strftime("%Y-%m-%dT%H-%M-%S") + f"-{now.microsecond // 1000:03d}"
+    now = datetime.now()
+    timestamp_str = now.strftime("%Y-%m-%dT%H-%M-%S") + f"-{now.microsecond // 1000:03d}"
     output_filepath = Config.RESULTS_DIR + Config.PURPOSE + timestamp_str
     os.makedirs(output_filepath+"/records", exist_ok=True)
 
@@ -43,9 +47,9 @@ def corrupt_file(input_dir, output_dir, filename, corruptor_fn):
     print_timestamp(f"Corrupting {input_filepath}...")
 
     corruptor_fn(
-        input_filepath+"/"+filename,
-        output_filepath+"/"+filename,
-        CONFIG.LOOKUP_FILES_DIR,
+        input_filepath,
+        output_dir+"/"+filename,
+        Config.LOOKUP_FILES_DIR,
         Config.DETERMINISTIC,
         Config.SEED,
         Config.PROFILE.PROPORTION_TO_CORRUPT,
@@ -57,7 +61,8 @@ def corrupt_file(input_dir, output_dir, filename, corruptor_fn):
     print_time_elapsed(start_time)
 
 def print_timestamp(string):
-    print(datetime.now().strftime("%Y/%m/%d %H-%M-%S") + f".{now.microsecond // 1000:03d} :: ", end="")
+    now = datetime.now()
+    print(now.strftime("%Y/%m/%d %H-%M-%S") + f".{now.microsecond // 1000:03d} :: ", end="")
     print(string)
 
 def print_time_elapsed(start_time):

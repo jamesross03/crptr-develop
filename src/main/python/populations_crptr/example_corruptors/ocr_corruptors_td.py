@@ -6,11 +6,10 @@
 # ValiPop outputs population records in this form when config includes: output_record_format = TD
 
 from crptr.crptr import Crptr
-from crptr.synthetic_populations.corruptor_definitions.birth_corruptors import BirthCorruptors
-from crptr.synthetic_populations.corruptor_definitions.death_corruptors import DeathCorruptors
-from crptr.synthetic_populations.corruptor_definitions.marriage_corruptors import MarriageCorruptors
+from populations_crptr.corruptor_definitions.birth_corruptors import BirthCorruptors
+from populations_crptr.corruptor_definitions.death_corruptors import DeathCorruptors
+from populations_crptr.corruptor_definitions.marriage_corruptors import MarriageCorruptors
 from . import utils
-import sys
 import csv
 
 def birthCorruptor(inputFile, outputFile, lookupFilesDir, deterministic, seed, proportionOfRecordsToCorrupt,
