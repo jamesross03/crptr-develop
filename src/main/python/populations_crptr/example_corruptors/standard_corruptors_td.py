@@ -13,11 +13,9 @@ from . import utils
 import sys
 import csv
 
-def birthCorruptor(inputFile, outputFile, logFile, lookupFilesDir, deterministic, seed, proportionOfRecordsToCorrupt,
+def birthCorruptor(inputFile, outputFile, lookupFilesDir, deterministic, seed, proportionOfRecordsToCorrupt,
                    maxModificationsPerAttribute, numberOfModificationsPerRecord, recordLevelProportion):
-    so = sys.stdout
-    logOutput = open(logFile, 'w')
-    sys.stdout = logOutput
+    
 
     dataset = list(csv.DictReader(open(inputFile)))
 
@@ -139,16 +137,13 @@ def birthCorruptor(inputFile, outputFile, logFile, lookupFilesDir, deterministic
     # Output corrupted data
     utils.outputDictToCSV(labels, records, outputFile)
 
-    sys.stdout = so
-    logOutput.close()
 
 
 
-def deathCorruptor(inputFile, outputFile, logFile, lookupFilesDir, deterministic, seed, proportionOfRecordsToCorrupt,
+
+def deathCorruptor(inputFile, outputFile, lookupFilesDir, deterministic, seed, proportionOfRecordsToCorrupt,
                    maxModificationsPerAttribute, numberOfModificationsPerRecord, recordLevelProportion):
-    so = sys.stdout
-    logOutput = open(logFile, 'w')
-    sys.stdout = logOutput
+    
 
     # records = Utils.readInFile(inputFile)
 
@@ -299,15 +294,12 @@ def deathCorruptor(inputFile, outputFile, logFile, lookupFilesDir, deterministic
     # Output corrupted data
     utils.outputDictToCSV(labels, records, outputFile)
 
-    sys.stdout = so
-    logOutput.close()
 
 
-def marriageCorruptor(inputFile, outputFile, logFile, lookupFilesDir, deterministic, seed, proportionOfRecordsToCorrupt,
+
+def marriageCorruptor(inputFile, outputFile, lookupFilesDir, deterministic, seed, proportionOfRecordsToCorrupt,
                    maxModificationsPerAttribute, numberOfModificationsPerRecord, recordLevelProportion):
-    so = sys.stdout
-    logOutput = open(logFile, 'w')
-    sys.stdout = logOutput
+    
 
     # records = Utils.readInFile(inputFile)
 
@@ -461,5 +453,3 @@ def marriageCorruptor(inputFile, outputFile, logFile, lookupFilesDir, determinis
     # Output corrupted data
     utils.outputDictToCSV(labels, records, outputFile)
 
-    sys.stdout = so
-    logOutput.close()
