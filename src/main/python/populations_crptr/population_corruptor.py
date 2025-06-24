@@ -12,6 +12,7 @@ import sys
 from config import Config
 
 def main(filepath):
+    # Check input directory exists and is a directory
     if not os.path.exists(filepath):
         print(f"Directory not found: {filepath}")
         return
@@ -22,13 +23,14 @@ def main(filepath):
 
     print (f"Running crptr for {filepath}")
 
+    # Generate output directory
     now = datetime.now()
     timestamp_str = now.strftime("%Y-%m-%dT%H-%M-%S") + f"-{now.microsecond // 1000:03d}"
     output_filepath = Config.RESULTS_DIR + Config.PURPOSE + timestamp_str
     os.makedirs(output_filepath+"/records", exist_ok=True)
 
+    # Corrupts files
     files = ["birth_records.csv", "marriage_records.csv", "death_records.csv"]
-
     corrupt_file(filepath, output_filepath, files[0], Config.Corruptors.birthCorruptor)
     corrupt_file(filepath, output_filepath, files[1], Config.Corruptors.marriageCorruptor)
     corrupt_file(filepath, output_filepath, files[2], Config.Corruptors.deathCorruptor)
@@ -38,8 +40,8 @@ def main(filepath):
 def corrupt_file(input_dir, output_dir, filename, corruptor_fn):
     start_time = datetime.now()
 
+    # Checks input file exists
     input_filepath = input_dir + "/" + filename
-
     if not os.path.exists(input_filepath):
         print (f"Skipping, file not found: {input_filepath}")
         return
@@ -48,7 +50,7 @@ def corrupt_file(input_dir, output_dir, filename, corruptor_fn):
 
     corruptor_fn(
         input_filepath,
-        output_dir+"/"+filename,
+        output_dir+"/records/"+filename,
         Config.LOOKUP_FILES_DIR,
         Config.DETERMINISTIC,
         Config.SEED,
