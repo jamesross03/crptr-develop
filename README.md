@@ -1,10 +1,14 @@
-# crptr
-crptr is a software that modifies data based on given probabilities and methods in order to simulate errors and variations occur in real-world data. 
+# Crptr
+Crptr is a software that modifies data based on given probabilities and methods in order to simulate errors and variations occur in real-world data. 
 
-Originally developed by [Tom Dalton](https://github.com/tomsdalton), as a fork of the [existing Crptr repository](https://github.com/alsediqi/crptr-old), for PhD research to evaluate record linkage methods and algorithms. However, the software can be used in any research that requires similar purposes. 
+Originally developed by [Ahmad Alsadeeqi](https://github.com/alsediqi) (see [original Crptr repository](https://github.com/alsediqi/crptr-old)). This fork was developed by [Tom Dalton](https://github.com/tomsdalton), to extend the existing application for PhD research to evaluate record linkage methods and algorithms. 
+
+The software is written in Python 3.0 and consists of two main packages:
+- `crptr` - the original Crptr application (updated to Python 3.0)
+- `populations_crptr` - the extensions for use with population data.
 
 ## Basic usage
 
 ## License 
-crptr published under Mozilla Public License 
+Crptr is published under the Mozilla Public License 
 

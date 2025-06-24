@@ -37,7 +37,7 @@ def corrupt_file(input_dir, output_dir, filename, corruptor_fn):
     input_filepath = input_dir + "/" + filename
 
     if not os.path.exists(input_filepath):
-        print (f"File not found: {input_filepath}")
+        print (f"Skipping, file not found: {input_filepath}")
         return
 
     print_timestamp(f"Corrupting {input_filepath}...")
