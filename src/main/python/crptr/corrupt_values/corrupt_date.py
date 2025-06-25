@@ -249,6 +249,3 @@ class CorruptDate(CorruptValue):
       new_date = str(year) + self.separator + str(month) + self.separator + str(day)
 
     return new_date
-
-def is_ascii(s):
-  return all(ord(c) < 128 for c in s)

@@ -528,3 +528,6 @@ class CorruptValuePhonetic(CorruptValue):
         #print in_str, mod_str, change_op
 
     return mod_str
+
+def is_ascii(s):
+  return all(ord(c) < 128 for c in s)
