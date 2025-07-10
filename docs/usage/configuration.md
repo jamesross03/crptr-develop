@@ -20,7 +20,6 @@ All of these are required and removing any from the configuration file (or leavi
     - [`profile_a`](../../src/main/python/populations_crptr/example_profiles/profile_a.py) 
     - [`profile_b`](../../src/main/python/populations_crptr/example_profiles/profile_b.py)
     - [`profile_c`](../../src/main/python/populations_crptr/example_profiles/profile_c.py)
-
 - **`CORRUPTORS`** specifies a set of corruptors to use from [populations_crptr.example_corruptors](../../src/main/python/populations_crptr/example_corruptors/). Supported options include:
     - [`standard_corruptors_td`](../../src/main/python/populations_crptr/example_corruptors/standard_corruptors_td.py)
     - [`ocr_corruptors_td`](../../src/main/python/populations_crptr/example_corruptors/ocr_corruptors_td.py)
